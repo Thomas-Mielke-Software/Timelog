@@ -34,7 +34,6 @@
 # angepasst
 *.txt
 *.htm
-TimeLog.vcxproj*
 TimeLog.vcproj.*.user
 *.ncb
 *.aps
