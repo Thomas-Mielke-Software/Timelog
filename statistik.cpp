@@ -268,7 +268,7 @@ void CStatistik::OnPaint()
 				dcDisplay.TextOut(425, k*11-25, (kuerzeltab[h].kuerzel ? &kuerzeltab[h].kuerzel : "+"), (kuerzeltab[h].kuerzel ? 1 : 1));
 				dcDisplay.MoveTo(445, k*11-17);
 				dcDisplay.LineTo(475, k*11-17);
-				VERIFY(pen2Old->DeleteObject());
+				pen2Old->DeleteObject();
 				delete ppen2;
 			}
 			if (bDrawIt) k++;
@@ -281,7 +281,7 @@ void CStatistik::OnPaint()
 void CStatistik::OnDeltaposSpinJahr(NMHDR* pNMHDR, LRESULT* pResult) 
 {
 	NM_UPDOWN* pNMUpDown = (NM_UPDOWN*)pNMHDR;
-	InvalidateRect(NULL, FALSE);
+	InvalidateRect(NULL, TRUE);
 	PostMessage(WM_PAINT);
 	
 	*pResult = 0;
