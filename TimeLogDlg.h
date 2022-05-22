@@ -9,10 +9,9 @@ class CTimeLogDlg : public CDialog
 // Construction
 public:
 	CTimeLogDlg(CWnd* pParent = NULL);	// standard constructor
-	CTimeLogDlg::~CTimeLogDlg();
+	~CTimeLogDlg();
 
 	char reg[100];
-	BOOL shareware;
 	UINT timer;
 // Dialog Data
 	//{{AFX_DATA(CTimeLogDlg)
@@ -34,14 +33,13 @@ public:
 	long size_of_liste;
 
 private:
-	void CTimeLogDlg::SaveListe();
-	void CTimeLogDlg::UpdateGesamtsumme();
-	void CTimeLogDlg::UpdateSelektiertSumme();
-	void CTimeLogDlg::Reg();
-	void CTimeLogDlg::SaveIt();
-	void CTimeLogDlg::On_MYWM_NOTIFYICON(WPARAM wParam, LPARAM lParam);
-	char *CTimeLogDlg::GetFilename();
-	char *CTimeLogDlg::GetIniPath();
+	void SaveListe();
+	void UpdateGesamtsumme();
+	void UpdateSelektiertSumme();
+	void SaveIt();
+	void On_MYWM_NOTIFYICON(WPARAM wParam, LPARAM lParam);
+	char *GetFilename();
+	char *GetIniPath();
 
 // Implementation
 protected:

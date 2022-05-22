@@ -50,6 +50,18 @@ BOOL CTimeLogApp::InitInstance()
 	LoadStdProfileSettings();  // Load standard INI file options (including MRU)
 	LoadIcon(IDR_MAINFRAME);
 
+	// schon eine andere Instanz am Laufen? Dann diese hier schlieﬂen und die laufende anzeigen
+	HWND hWndFind = ::FindWindow(NULL, "Time Log");
+	if (hWndFind)
+	{
+		
+		::ShowWindow(hWndFind, SW_SHOW);
+		::ShowWindow(hWndFind, SW_RESTORE);
+		::SetWindowPos(hWndFind, CWnd::wndTopMost, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+		::SetForegroundWindow(hWndFind);
+		return TRUE;
+	}
+
 	CTimeLogDlg dlg;
 	int nResponse = dlg.DoModal();
 
