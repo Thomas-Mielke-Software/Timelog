@@ -11,14 +11,18 @@ Ein aktuelles Visual Studio mit C++/MFC Tooling wird zum Bauen gebraucht.
 
 ### Installation
 
-Das Programm ist für mobile Installation ausgelegt. Es gibt keinen 
-Installer. TimeLog.exe kann also einfach auf einen USB-Stick oder 
-in das eigene Userverzeichnis gespeichert werden. Gespeichert wird 
-in die Datei TimeLog.txt im selben verzeichnis. Soll ein anderes 
-Verzeichnis benutzt werden als das, in dem sich die Exe befindet, 
-kann in der Datei TimeLog.ini mit einem Editor unter der Sektion 
-[TimeLog] die Zeile "LogFile=C:\Users\ich\Nextcloud\TimeLog.txt" 
-(als Beispiel) eingetragen werden.
+Ein passendes VC-Redistributable muss zusätzlich installiert werden:
+
+https://docs.microsoft.com/de-de/cpp/windows/latest-supported-vc-redist
+
+Ansonsten ist das Programm ist für mobile Installation ausgelegt. 
+Es gibt keinen Installer. TimeLog.exe kann also einfach auf einen 
+USB-Stick oder in das eigene Userverzeichnis gespeichert werden. 
+Gespeichert wird in die Datei TimeLog.txt im selben verzeichnis. 
+Soll ein anderes Verzeichnis benutzt werden als das, in dem sich 
+die Exe befindet, kann in der Datei TimeLog.ini mit einem Editor 
+unter der Sektion [TimeLog] (als Beispiel) die Zeile 
+"LogFile=C:\Users\ich\Nextcloud\TimeLog.txt" eingetragen werden.
 
 ### Einleitung
 
