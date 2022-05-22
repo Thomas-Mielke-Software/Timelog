@@ -1,27 +1,27 @@
-// Testdlg.h : header file
+// TimeLogdlg.h : header file
 //
 
 /////////////////////////////////////////////////////////////////////////////
-// CTestDlg dialog
+// CTimeLogDlg dialog
 
-class CTestDlg : public CDialog
+class CTimeLogDlg : public CDialog
 {
 // Construction
 public:
-	CTestDlg(CWnd* pParent = NULL);	// standard constructor
-	CTestDlg::~CTestDlg();
+	CTimeLogDlg(CWnd* pParent = NULL);	// standard constructor
+	CTimeLogDlg::~CTimeLogDlg();
 
 	char reg[100];
 	BOOL shareware;
 	UINT timer;
 // Dialog Data
-	//{{AFX_DATA(CTestDlg)
-	enum { IDD = IDD_TEST_DIALOG };
+	//{{AFX_DATA(CTimeLogDlg)
+	enum { IDD = IDD_TIMELOG_DIALOG };
 		// NOTE: the ClassWizard will add data members here
 	//}}AFX_DATA
 
 	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CTestDlg)
+	//{{AFX_VIRTUAL(CTimeLogDlg)
 	public:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	protected:
@@ -34,21 +34,21 @@ public:
 	long size_of_liste;
 
 private:
-	void CTestDlg::SaveListe();
-	void CTestDlg::UpdateGesamtsumme();
-	void CTestDlg::UpdateSelektiertSumme();
-	void CTestDlg::Reg();
-	void CTestDlg::SaveIt();
-	void CTestDlg::On_MYWM_NOTIFYICON(WPARAM wParam, LPARAM lParam);
-	char *CTestDlg::GetFilename();
-	char *CTestDlg::GetIniPath();
+	void CTimeLogDlg::SaveListe();
+	void CTimeLogDlg::UpdateGesamtsumme();
+	void CTimeLogDlg::UpdateSelektiertSumme();
+	void CTimeLogDlg::Reg();
+	void CTimeLogDlg::SaveIt();
+	void CTimeLogDlg::On_MYWM_NOTIFYICON(WPARAM wParam, LPARAM lParam);
+	char *CTimeLogDlg::GetFilename();
+	char *CTimeLogDlg::GetIniPath();
 
 // Implementation
 protected:
 	HICON m_hIcon;
 
 	// Generated message map functions
-	//{{AFX_MSG(CTestDlg)
+	//{{AFX_MSG(CTimeLogDlg)
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();

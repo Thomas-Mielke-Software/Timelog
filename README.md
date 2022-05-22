@@ -39,8 +39,11 @@ Anfangszeit registriert.
 
 ### Bedienung
 
-Ganz einfach: Nach jeder abgeschlossenen Tätigkeit gib eine kurze
-Beschreibung in das dafür vorgesehene Feld ein und drücke OK. Wenn Du
+TimeLog minimiert sich beim Schließen des Fensters in den Systembereich 
+der Task-Leiste rechts unten, damit es schnell durch Doppelklicken erreichbar ist.
+
+Nach jeder abgeschlossenen Tätigkeit gib eine kurze Beschreibung in 
+das dafür vorgesehene Feld der Eingabemaske ein und drücke OK. Wenn Du
 das Feld Bis-Uhrzeit leer lässt, wird die aktuelle Zeit automatisch 
 eingetragen. Außerdem ist es möglich, im Feld 'Kürzel' unterschiedliche
 Buchstaben einzutragen, falls für mehr als einen Auftraggeber

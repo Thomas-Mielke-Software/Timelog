@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="Test"
+	Name="TimeLog"
 	ProjectGUID="{9494B5E8-606C-414E-A706-DE3FB99AAB8D}"
-	RootNamespace="Test"
+	RootNamespace="TimeLog"
 	Keyword="MFCProj"
 	TargetFrameworkVersion="0"
 	>
@@ -42,7 +42,7 @@
 				Name="VCMIDLTool"
 				MkTypLibCompatible="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\WinRel/Test.tlb"
+				TypeLibraryName=".\WinRel/TimeLog.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -50,7 +50,7 @@
 				Optimization="0"
 				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS"
 				RuntimeLibrary="2"
-				PrecompiledHeaderFile=".\WinRel/Test.pch"
+				PrecompiledHeaderFile=".\WinRel/TimeLog.pch"
 				AssemblerListingLocation=".\WinRel/"
 				ObjectFile=".\WinRel/"
 				ProgramDataBaseFileName=".\WinRel/"
@@ -130,7 +130,7 @@
 				Name="VCMIDLTool"
 				MkTypLibCompatible="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\WinDebug/Test.tlb"
+				TypeLibraryName=".\WinDebug/TimeLog.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -141,7 +141,7 @@
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile=".\WinDebug/Test.pch"
+				PrecompiledHeaderFile=".\WinDebug/TimeLog.pch"
 				AssemblerListingLocation=".\WinDebug/"
 				ObjectFile=".\WinDebug/"
 				ProgramDataBaseFileName=".\WinDebug/"
@@ -335,7 +335,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="Test.cpp"
+				RelativePath="TimeLog.cpp"
 				>
 				<FileConfiguration
 					Name="Release|Win32"
@@ -355,7 +355,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="Test.rc"
+				RelativePath="TimeLog.rc"
 				>
 				<FileConfiguration
 					Name="Release|Win32"
@@ -375,7 +375,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="Testdlg.cpp"
+				RelativePath="TimeLogdlg.cpp"
 				>
 				<FileConfiguration
 					Name="Release|Win32"
@@ -449,11 +449,11 @@
 			Filter="ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe"
 			>
 			<File
-				RelativePath="res\Test.ico"
+				RelativePath="res\TimeLog.ico"
 				>
 			</File>
 			<File
-				RelativePath="res\Test.rc2"
+				RelativePath="res\TimeLog.rc2"
 				>
 			</File>
 			<File

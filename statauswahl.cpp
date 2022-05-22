@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "Test.h"
+#include "TimeLog.h"
 #include "StatAuswahl.h"
 
 #ifdef _DEBUG

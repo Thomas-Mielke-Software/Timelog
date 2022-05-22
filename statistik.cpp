@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include <afxcmn.h>
-#include "Test.h"
+#include "TimeLog.h"
 #include "smformat.h"
 #include "StatAuswahl.h"
 #include "Statistik.h"
@@ -172,7 +172,7 @@ void CStatistik::OnPaint()
 
 		CBrush br0;
 		CPen pen1, *ppen2, *pen1Old, *pen2Old;
-		br0.CreateSolidBrush(0x00ffffff);			// sattes weiß für Hintergrund
+		br0.CreateSolidBrush(0x00ffffff);			// sattes weiï¿½ fï¿½r Hintergrund
 		pen1.CreatePen(PS_SOLID, 1, 0x00d04010);	// nettes blau
 
 		// Hintergrund
@@ -254,7 +254,7 @@ void CStatistik::OnPaint()
 			if (bDrawIt)
 			{
 				ppen2 = new CPen;
-				ppen2->CreatePen(PS_SOLID, 3, kuerzeltab[h].farbe);	// schönes grün
+				ppen2->CreatePen(PS_SOLID, 3, kuerzeltab[h].farbe);	// schï¿½nes grï¿½n
 				VERIFY(pen2Old = dcDisplay.SelectObject(ppen2));	
 				for (i = hStart; i < hCount + hStart; i += 1/*hStep*/)
 				{

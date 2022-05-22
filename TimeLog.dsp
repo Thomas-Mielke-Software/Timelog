@@ -1,24 +1,24 @@
-# Microsoft Developer Studio Project File - Name="Test" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="TimeLog" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
-CFG=Test - Win32 Debug
+CFG=TimeLog - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
-!MESSAGE NMAKE /f "Test.mak".
+!MESSAGE NMAKE /f "TimeLog.mak".
 !MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "Test.mak" CFG="Test - Win32 Debug"
+!MESSAGE NMAKE /f "TimeLog.mak" CFG="TimeLog - Win32 Debug"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "Test - Win32 Debug" (based on "Win32 (x86) Application")
-!MESSAGE "Test - Win32 Release" (based on "Win32 (x86) Application")
+!MESSAGE "TimeLog - Win32 Debug" (based on "Win32 (x86) Application")
+!MESSAGE "TimeLog - Win32 Release" (based on "Win32 (x86) Application")
 !MESSAGE 
 
 # Begin Project
@@ -29,7 +29,7 @@ CPP=cl.exe
 MTL=midl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "Test - Win32 Debug"
+!IF  "$(CFG)" == "TimeLog - Win32 Debug"
 
 # PROP BASE Use_MFC 6
 # PROP BASE Use_Debug_Libraries 1
@@ -53,7 +53,7 @@ LINK32=link.exe
 # ADD LINK32 /nologo /subsystem:windows /debug /machine:I386 /out:".\WinDebug\TimeLog.exe"
 # SUBTRACT LINK32 /pdb:none
 
-!ELSEIF  "$(CFG)" == "Test - Win32 Release"
+!ELSEIF  "$(CFG)" == "TimeLog - Win32 Release"
 
 # PROP BASE Use_MFC 6
 # PROP BASE Use_Debug_Libraries 0
@@ -82,8 +82,8 @@ LINK32=link.exe
 
 # Begin Target
 
-# Name "Test - Win32 Debug"
-# Name "Test - Win32 Release"
+# Name "TimeLog - Win32 Debug"
+# Name "TimeLog - Win32 Release"
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;for;f90"
@@ -119,15 +119,15 @@ SOURCE=.\stdafx.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Test.cpp
+SOURCE=.\TimeLog.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Test.rc
+SOURCE=.\TimeLog.rc
 # End Source File
 # Begin Source File
 
-SOURCE=.\Testdlg.cpp
+SOURCE=.\TimeLogdlg.cpp
 # End Source File
 # Begin Source File
 
@@ -183,11 +183,11 @@ SOURCE=.\testdlg.h
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe"
 # Begin Source File
 
-SOURCE=.\res\Test.ico
+SOURCE=.\res\TimeLog.ico
 # End Source File
 # Begin Source File
 
-SOURCE=.\res\Test.rc2
+SOURCE=.\res\TimeLog.rc2
 # End Source File
 # Begin Source File
 

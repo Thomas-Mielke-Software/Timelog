@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "Test.h"
-#include "Testdlg.h"
+#include "TimeLog.h"
+#include "TimeLogdlg.h"
 #include <afx.h>
 
 #include "SmFormat.h"
@@ -25,7 +25,7 @@ StreamFormat::StreamFormat(char *String)
 			break;
 
 		*ppStreamFormatBuffer = new StreamFormatBuffer;
-		VERIFY((*ppStreamFormatBuffer)->Line = (char *)malloc(cp1 - cp2 + 1)); // Platz für Zeile
+		VERIFY((*ppStreamFormatBuffer)->Line = (char *)malloc(cp1 - cp2 + 1)); // Platz fï¿½r Zeile
 		strncpy((*ppStreamFormatBuffer)->Line, cp2, cp1 - cp2);
 		(*ppStreamFormatBuffer)->next = NULL;
 		ppStreamFormatBuffer = &(*ppStreamFormatBuffer)->next;

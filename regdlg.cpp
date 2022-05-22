@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "Test.h"
+#include "TimeLog.h"
 #include "RegDlg.h"
 
 #ifdef _DEBUG
@@ -134,7 +134,7 @@ void Crypt(char *into, char *s)
 }
 #endif
 
-// Registriernummern müssen durch 3 teilbar sein
+// Registriernummern mï¿½ssen durch 3 teilbar sein
 BOOL CheckReg(char *s)
 {
 	char buffer[100];

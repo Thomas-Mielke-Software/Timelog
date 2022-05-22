@@ -1,9 +1,9 @@
-// Test.cpp : Defines the class behaviors for the application.
+// TimeLog.cpp : Defines the class behaviors for the application.
 //
 
 #include "stdafx.h"
-#include "Test.h"
-#include "Testdlg.h"
+#include "TimeLog.h"
+#include "TimeLogdlg.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -11,10 +11,10 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// CTestApp
+// CTimeLogApp
 
-BEGIN_MESSAGE_MAP(CTestApp, CWinApp)
-	//{{AFX_MSG_MAP(CTestApp)
+BEGIN_MESSAGE_MAP(CTimeLogApp, CWinApp)
+	//{{AFX_MSG_MAP(CTimeLogApp)
 		// NOTE - the ClassWizard will add and remove mapping macros here.
 		//    DO NOT EDIT what you see in these blocks of generated code!
 	//}}AFX_MSG
@@ -23,23 +23,23 @@ BEGIN_MESSAGE_MAP(CTestApp, CWinApp)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CTestApp construction
+// CTimeLogApp construction
 
-CTestApp::CTestApp()
+CTimeLogApp::CTimeLogApp()
 {
 	// TODO: add construction code here,
 	// Place all significant initialization in InitInstance
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// The one and only CTestApp object
+// The one and only CTimeLogApp object
 
-CTestApp theApp;
+CTimeLogApp theApp;
 
 /////////////////////////////////////////////////////////////////////////////
-// CTestApp initialization
+// CTimeLogApp initialization
 
-BOOL CTestApp::InitInstance()
+BOOL CTimeLogApp::InitInstance()
 {
 	// Standard initialization
 	// If you are not using these features and wish to reduce the size
@@ -50,7 +50,7 @@ BOOL CTestApp::InitInstance()
 	LoadStdProfileSettings();  // Load standard INI file options (including MRU)
 	LoadIcon(IDR_MAINFRAME);
 
-	CTestDlg dlg;
+	CTimeLogDlg dlg;
 	int nResponse = dlg.DoModal();
 
 	if (nResponse == IDOK)

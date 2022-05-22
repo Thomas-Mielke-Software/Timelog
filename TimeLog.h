@@ -1,4 +1,4 @@
-// Test.h : main header file for the TEST application
+// TimeLog.h : main header file for the TIMELOG application
 //
 
 #ifndef __AFXWIN_H__
@@ -8,25 +8,25 @@
 #include "resource.h"		// main symbols
 
 /////////////////////////////////////////////////////////////////////////////
-// CTestApp:
-// See Test.cpp for the implementation of this class
+// CTimeLogApp:
+// See TimeLog.cpp for the implementation of this class
 //
 
-class CTestApp : public CWinApp
+class CTimeLogApp : public CWinApp
 {
 public:
-	CTestApp();
+	CTimeLogApp();
 
 // Overrides
 	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CTestApp)
+	//{{AFX_VIRTUAL(CTimeLogApp)
 	public:
 	virtual BOOL InitInstance();
 	//}}AFX_VIRTUAL
 
 // Implementation
 
-	//{{AFX_MSG(CTestApp)
+	//{{AFX_MSG(CTimeLogApp)
 		// NOTE - the ClassWizard will add and remove member functions here.
 		//    DO NOT EDIT what you see in these blocks of generated code !
 	//}}AFX_MSG

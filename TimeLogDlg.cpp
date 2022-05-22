@@ -1,9 +1,9 @@
-// Testdlg.cpp : implementation file
+// TimeLogdlg.cpp : implementation file
 //
 
 #include "stdafx.h"
-#include "Test.h"
-#include "Testdlg.h"
+#include "TimeLog.h"
+#include "TimeLogdlg.h"
 #include <afx.h>
 
 #include "SmFormat.h"
@@ -62,7 +62,7 @@ END_MESSAGE_MAP()
 // CAboutDlg message handlers
 			  
 
-#include "..\TelAr\getprogramversion.h"
+#include "getprogramversion.h"
 
 BOOL CAboutDlg::OnInitDialog() 
 {
@@ -76,7 +76,7 @@ BOOL CAboutDlg::OnInitDialog()
 		VS_FIXEDFILEINFO vs_ffi;
 		if (hExe) 
 		{
-			GetProgramVerion(hExe, &vs_ffi);	// version_string := "v2.0" oder so ähnlich
+			GetProgramVersion(hExe, &vs_ffi);	// version_string := "v2.0" oder so Ã¤hnlich
 			sprintf(version_string, "v%0lu.%0lu", vs_ffi.dwProductVersionMS >> 16, vs_ffi.dwProductVersionMS & 0xffff);
 		}
 		else 
@@ -96,12 +96,12 @@ void CAboutDlg::OnRegister()
 }
 
 ///////////////////
-// CTestDlg dialog
+// CTimeLogDlg dialog
 
-CTestDlg::CTestDlg(CWnd* pParent /*=NULL*/)
-	: CDialog(CTestDlg::IDD, pParent)
+CTimeLogDlg::CTimeLogDlg(CWnd* pParent /*=NULL*/)
+	: CDialog(CTimeLogDlg::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(CTestDlg)
+	//{{AFX_DATA_INIT(CTimeLogDlg)
 		// NOTE: the ClassWizard will add member initialization here
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
@@ -112,21 +112,21 @@ CTestDlg::CTestDlg(CWnd* pParent /*=NULL*/)
 	timer = 0;
 }
 
-CTestDlg::~CTestDlg()
+CTimeLogDlg::~CTimeLogDlg()
 {
 	if (liste) delete liste;
 }
 
-void CTestDlg::DoDataExchange(CDataExchange* pDX)
+void CTimeLogDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CTestDlg)
+	//{{AFX_DATA_MAP(CTimeLogDlg)
 		// NOTE: the ClassWizard will add DDX and DDV calls here
 	//}}AFX_DATA_MAP
 }
 
-BEGIN_MESSAGE_MAP(CTestDlg, CDialog)
-	//{{AFX_MSG_MAP(CTestDlg)
+BEGIN_MESSAGE_MAP(CTimeLogDlg, CDialog)
+	//{{AFX_MSG_MAP(CTimeLogDlg)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
@@ -149,9 +149,9 @@ BEGIN_MESSAGE_MAP(CTestDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CTestDlg message handlers
+// CTimeLogDlg message handlers
 
-BOOL CTestDlg::OnInitDialog()
+BOOL CTimeLogDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 	
@@ -187,7 +187,7 @@ BOOL CTestDlg::OnInitDialog()
 	nid.uFlags = NIF_ICON|NIF_MESSAGE|NIF_TIP;
 	nid.uCallbackMessage = MYWM_NOTIFYICON;
 	nid.hIcon = m_hIcon;
-	strcpy(nid.szTip, "TimeLog öffnen mit Doppelklick");
+	strcpy(nid.szTip, "TimeLog ï¿½ffnen mit Doppelklick");
 	Shell_NotifyIcon(NIM_ADD, &nid); 
 	
 	int TabStopArray[2] = { 110, 150 };
@@ -306,7 +306,7 @@ BOOL CTestDlg::OnInitDialog()
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
-void CTestDlg::OnSysCommand(UINT nID, LPARAM lParam)
+void CTimeLogDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
@@ -328,7 +328,7 @@ void CTestDlg::OnSysCommand(UINT nID, LPARAM lParam)
 //  to draw the icon.  For MFC applications using the document/view model,
 //  this is automatically done for you by the framework.
 
-void CTestDlg::OnPaint() 
+void CTimeLogDlg::OnPaint() 
 {
 	if (IsIconic())
 	{
@@ -355,12 +355,12 @@ void CTestDlg::OnPaint()
 
 // The system calls this to obtain the cursor to display while the user drags
 //  the minimized window.
-HCURSOR CTestDlg::OnQueryDragIcon()
+HCURSOR CTimeLogDlg::OnQueryDragIcon()
 {
 	return (HCURSOR) m_hIcon;
 }
 
-void CTestDlg::OnAbout() 
+void CTimeLogDlg::OnAbout() 
 {
 	// TODO: Add your control notification handler code here
 	CAboutDlg dlgAbout;
@@ -369,13 +369,13 @@ void CTestDlg::OnAbout()
 	//Reg();
 }
 
-void CTestDlg::OnFocusBeschreibung() 
+void CTimeLogDlg::OnFocusBeschreibung() 
 {
 	// TODO: Add your control notification handler code here
 	
 }
 
-void CTestDlg::OnOK() 
+void CTimeLogDlg::OnOK() 
 {
 	char buffer[80];
 	char buffer2[80];
@@ -387,7 +387,7 @@ void CTestDlg::OnOK()
 		GetDlgItemText(IDC_KUERZEL, kuerzel, sizeof(kuerzel));
 		if (!*kuerzel) 
 		{
-			MessageBox("Wenn die Check-Box angekreuzt ist, muß ein Kürzel angegeben werden!");			
+			MessageBox("Wenn die Check-Box angekreuzt ist, muï¿½ ein Kï¿½rzel angegeben werden!");			
 			GetDlgItem(IDC_KUERZEL)->SetFocus();
 			return;
 		}
@@ -407,7 +407,7 @@ void CTestDlg::OnOK()
 			!isdigit(buffer2[6]) ||
 			!isdigit(buffer2[7]))
 		{
-			MessageBox("Datumsformat muß dem Schema ##.##.## entsprechen!");
+			MessageBox("Datumsformat muï¿½ dem Schema ##.##.## entsprechen!");
 			GetDlgItem(IDC_DATUM)->SetFocus();
 			return;
 		}
@@ -422,12 +422,12 @@ void CTestDlg::OnOK()
 			!isdigit(buffer3[3]) ||
 			!isdigit(buffer3[4]))
 		{
-			MessageBox("Zeitformat muß dem Schema ##:## entsprechen!");
+			MessageBox("Zeitformat muï¿½ dem Schema ##:## entsprechen!");
 			GetDlgItem(IDC_VON)->SetFocus();
 			return;
 		}
 	}
-	// spezialbehandlung für Bis-Zeit:
+	// spezialbehandlung fï¿½r Bis-Zeit:
 	{
 		GetDlgItemText(IDC_BIS, buffer2, sizeof(buffer2));
 		if (!*buffer2)
@@ -447,7 +447,7 @@ void CTestDlg::OnOK()
 			!isdigit(buffer2[3]) ||
 			!isdigit(buffer2[4]))
 		{
-			MessageBox("Zeitformat muß dem Schema ##:## entsprechen!");
+			MessageBox("Zeitformat muï¿½ dem Schema ##:## entsprechen!");
 			GetDlgItem(IDC_BIS)->SetFocus();
 			return;
 		}
@@ -464,7 +464,7 @@ void CTestDlg::OnOK()
 
 		if (von >= bis)
 		{	
-			MessageBox("Von-Zeit muß vor der Bis-Zeit liegen!", "Fehler", MB_ICONEXCLAMATION | MB_OK);
+			MessageBox("Von-Zeit muï¿½ vor der Bis-Zeit liegen!", "Fehler", MB_ICONEXCLAMATION | MB_OK);
 			return;
 		}
 		else
@@ -506,13 +506,13 @@ void CTestDlg::OnOK()
 		if (sf->GetRows() > 30)
 		{
 			MessageBox("Sie benutzen dieses Programm nun schon ein paar Tage. \
-Sie sollten sich überlegen, ob Sie sich nicht registrieren lassen wollen! \
+Sie sollten sich ï¿½berlegen, ob Sie sich nicht registrieren lassen wollen! \
 Diesen kleine Nerven-Requester werden Sie zwar kaum ein zweites mal durchlesen, \
 aber rechnen wir nur mal zwei Sekunden zum Wegklicken: Wenn Sie dieses Programm \
-geschäftlich einsetzen und nur mal einen Stundensatz von 20,- DM zugrundelegen \
-und nehmen wir mal an, Sie erfassen die Zeiten von zehn Tätigkeiten am Tag - das \
-würde bedeuten, daß sich die 20,- DM für die Registrierung nach 180 Tagen amortisiert \
-hätten! Und mehr noch: Sie würden über Programmerweiterungen wie etwa Statistiken und \
+geschï¿½ftlich einsetzen und nur mal einen Stundensatz von 20,- DM zugrundelegen \
+und nehmen wir mal an, Sie erfassen die Zeiten von zehn Tï¿½tigkeiten am Tag - das \
+wï¿½rde bedeuten, daï¿½ sich die 20,- DM fï¿½r die Registrierung nach 180 Tagen amortisiert \
+hï¿½tten! Und mehr noch: Sie wï¿½rden ï¿½ber Programmerweiterungen wie etwa Statistiken und \
 Formulargeneratoren zur Abrechnung informiert werden. Geben Sie sich doch einen Ruck \
 und schicken 20,- DM und Ihre genaue Adresse (oder besser noch Fax-Nummer) an 'Thomas \
 Mielke, Luruper Weg 53, 20257 Hamburg'. Sie werden dann innerhalb von 14 Tagen mit der \
@@ -525,7 +525,7 @@ registrierten Version arbeiten.", "Nerv, nerv, nerv...");
 	UpdateGesamtsumme();
 }
 
-void CTestDlg::UpdateGesamtsumme()
+void CTimeLogDlg::UpdateGesamtsumme()
 {// Gesamt-Summe updaten...
 	char buffer[30];
 	long hours, minutes;
@@ -547,7 +547,7 @@ void CTestDlg::UpdateGesamtsumme()
 }
 
 
-void CTestDlg::UpdateSelektiertSumme()
+void CTimeLogDlg::UpdateSelektiertSumme()
 {
 	char buffer[30];
 	long hours, minutes;
@@ -609,7 +609,7 @@ void CTestDlg::UpdateSelektiertSumme()
 }
 
 
-void CTestDlg::SaveListe()
+void CTimeLogDlg::SaveListe()
 {
 	CFile pFile;
 
@@ -623,9 +623,9 @@ void CTestDlg::SaveListe()
 }
 
 
-void CTestDlg::OnDelete() 
+void CTimeLogDlg::OnDelete() 
 {
-	if (MessageBox("Liste wirklich löschen?", "Löschen", MB_ICONQUESTION | MB_YESNO) == IDYES)
+	if (MessageBox("Liste wirklich lï¿½schen?", "Lï¿½schen", MB_ICONQUESTION | MB_YESNO) == IDYES)
 	{
 		memset(liste, '\0', size_of_liste);
 		SetDlgItemText(IDC_LISTE, "");
@@ -634,7 +634,7 @@ void CTestDlg::OnDelete()
 	SaveListe();
 }
 
-void CTestDlg::OnVonzeit() 
+void CTimeLogDlg::OnVonzeit() 
 {
 	char buffer[20];
 	CTime now = now.GetCurrentTime();                           
@@ -646,7 +646,7 @@ void CTestDlg::OnVonzeit()
 
 }
 
-void CTestDlg::OnBiszeit() 
+void CTimeLogDlg::OnBiszeit() 
 {
 	char buffer[20];
 	CTime now = now.GetCurrentTime();                           
@@ -657,7 +657,7 @@ void CTestDlg::OnBiszeit()
 	GetDlgItem(IDC_BESCHREIBUNG)->SetFocus();
 }
 
-void CTestDlg::OnVondatum() 
+void CTimeLogDlg::OnVondatum() 
 {
 	char buffer[20];
 	CTime now = now.GetCurrentTime();                           
@@ -669,19 +669,19 @@ void CTestDlg::OnVondatum()
 }
 
 
-void CTestDlg::OnErrspaceListe() 
+void CTimeLogDlg::OnErrspaceListe() 
 {
-	MessageBox("Liste hat die maximale Aufnahmekapazität für Einträge erreicht. Bitte die TimeLog.txt-Datei löschen/umbenennen, um mit einem neuer neuen Log-Datei zu beginnen");
+	MessageBox("Liste hat die maximale Aufnahmekapazitï¿½t fï¿½r Eintrï¿½ge erreicht. Bitte die TimeLog.txt-Datei lï¿½schen/umbenennen, um mit einem neuer neuen Log-Datei zu beginnen");
 }
 
-void CTestDlg::OnLButtonUp(UINT nFlags, CPoint point) 
+void CTimeLogDlg::OnLButtonUp(UINT nFlags, CPoint point) 
 {
 	UpdateSelektiertSumme();
 	
 	CDialog::OnLButtonUp(nFlags, point);
 }
 
-BOOL CTestDlg::PreTranslateMessage(MSG* pMsg) 
+BOOL CTimeLogDlg::PreTranslateMessage(MSG* pMsg) 
 {
 	if (pMsg->message == WM_MOUSEMOVE)
 	{
@@ -693,7 +693,7 @@ BOOL CTestDlg::PreTranslateMessage(MSG* pMsg)
 	return CDialog::PreTranslateMessage(pMsg);
 }
 
-void CTestDlg::Reg()
+void CTimeLogDlg::Reg()
 {
 	extern BOOL CheckReg(char *);
 	extern void GetRegName(char *, char *);
@@ -719,13 +719,13 @@ void CTestDlg::Reg()
 		shareware = FALSE;
 		
 		GetRegName(regstr, reg);
-		strcpy(s, "Registriert für ");
+		strcpy(s, "Registriert fï¿½r ");
 		strcat(s, regstr);
 		SetDlgItemText(IDC_REG_STRING, s);
 	}
 }
 
-void CTestDlg::OnStatistiken() 
+void CTimeLogDlg::OnStatistiken() 
 {
 	int choice;
 
@@ -753,7 +753,7 @@ void CTestDlg::OnStatistiken()
 	delete sf;
 }
 
-void CTestDlg::OnTimer(UINT nIDEvent) 
+void CTimeLogDlg::OnTimer(UINT nIDEvent) 
 {
 	if (nIDEvent == 99)
 	{
@@ -766,7 +766,7 @@ void CTestDlg::OnTimer(UINT nIDEvent)
 	CDialog::OnTimer(nIDEvent);
 }
 
-void CTestDlg::OnDestroy() 
+void CTimeLogDlg::OnDestroy() 
 {
 	CDialog::OnDestroy();
 	
@@ -795,17 +795,17 @@ void CTestDlg::OnDestroy()
 
 }
 
-void CTestDlg::OnKillfocusVon() 
+void CTimeLogDlg::OnKillfocusVon() 
 {
 	SaveIt();
 }
 
-void CTestDlg::OnKillfocusBeschreibung() 
+void CTimeLogDlg::OnKillfocusBeschreibung() 
 {
 	SaveIt();
 }
 
-void CTestDlg::SaveIt()
+void CTimeLogDlg::SaveIt()
 {
 	char buffer[200];
 	GetDlgItemText(IDC_DATUM, buffer, sizeof(buffer));
@@ -831,7 +831,7 @@ void CTestDlg::SaveIt()
 	);	
 }
 
-void CTestDlg::OnChangeKuerzel() 
+void CTimeLogDlg::OnChangeKuerzel() 
 {
 	char kuerzel[2];
 	GetDlgItemText(IDC_KUERZEL, kuerzel, sizeof(kuerzel));
@@ -853,7 +853,7 @@ void CTestDlg::OnChangeKuerzel()
 	}
 }
 
-void CTestDlg::OnChangeKuerzel2() 
+void CTimeLogDlg::OnChangeKuerzel2() 
 {
 	char kuerzel[2];
 	GetDlgItemText(IDC_KUERZEL2, kuerzel, sizeof(kuerzel));
@@ -875,7 +875,7 @@ void CTestDlg::OnChangeKuerzel2()
 	}
 }
 
-LRESULT CTestDlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam) 
+LRESULT CTimeLogDlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam) 
 {
 	if (message == MYWM_NOTIFYICON)
 	{
@@ -892,7 +892,7 @@ LRESULT CTestDlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 // On_MYWM_NOTIFYICON - processes callback messages for taskbar icons  
 // wParam - first message parameter of the callback message 
 // lParam - second message parameter of the callback message 
-void CTestDlg::On_MYWM_NOTIFYICON(WPARAM wParam, LPARAM lParam) 
+void CTimeLogDlg::On_MYWM_NOTIFYICON(WPARAM wParam, LPARAM lParam) 
 { 
     UINT uID; 
     UINT uMouseMsg; 
@@ -917,16 +917,16 @@ void CTestDlg::On_MYWM_NOTIFYICON(WPARAM wParam, LPARAM lParam)
     return; 
 } 
 
-void CTestDlg::OnCancel() 
+void CTimeLogDlg::OnCancel() 
 {
 	if (AfxMessageBox("TimeLog wirklich deaktivieren?", MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2) == IDNO) return;
 	
 	CDialog::OnCancel();
 }
 
-char *CTestDlg::GetFilename()
+char *CTimeLogDlg::GetFilename()
 {
-	extern CTestApp theApp;
+	extern CTimeLogApp theApp;
 	static char filename[1000];
 	GetModuleFileName(theApp.m_hInstance, filename, sizeof(filename));
 	static char defaultpath[1000];
@@ -940,9 +940,9 @@ char *CTestDlg::GetFilename()
 	return filename;
 }
 
-char *CTestDlg::GetIniPath()
+char *CTimeLogDlg::GetIniPath()
 {
-	extern CTestApp theApp;
+	extern CTimeLogApp theApp;
 	static char inipath[1000];
 	GetModuleFileName(theApp.m_hInstance, inipath, sizeof(inipath));
 	while (strlen(inipath) && inipath[strlen(inipath)-1] != '\\')

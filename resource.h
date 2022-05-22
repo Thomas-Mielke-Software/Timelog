@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Developer Studio generated include file.
-// Used by Test.rc
+// Used by TimeLog.rc
 //
 #define IDABOUT                         3
 #define IDDELETE                        4
@@ -11,7 +11,7 @@
 #define IDM_ABOUTBOX                    0x0010
 #define IDD_ABOUTBOX                    100
 #define IDS_ABOUTBOX                    101
-#define IDD_TEST_DIALOG                 102
+#define IDD_TIMELOG_DIALOG                 102
 #define IDR_MAINFRAME                   128
 #define IDB_UHR                         130
 #define IDD_REGISTER_DIALOG             131
