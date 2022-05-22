@@ -30,3 +30,17 @@
 *.exe
 *.out
 *.app
+
+# angepasst
+*.txt
+*.htm
+TimeLog.vcxproj*
+TimeLog.vcproj.*.user
+*.ncb
+*.aps
+.vs/*
+Backup/*
+*.doc
+WinDebug/*
+WinRel/*
+

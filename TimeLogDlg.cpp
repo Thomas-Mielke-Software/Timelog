@@ -7,7 +7,6 @@
 #include <afx.h>
 
 #include "SmFormat.h"
-#include "RegDlg.h"
 #include "StatAuswahl.h"
 #include "Statistik.h"
 
@@ -34,7 +33,6 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 	//{{AFX_MSG(CAboutDlg)
 	virtual BOOL OnInitDialog();
-	afx_msg void OnRegister();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
@@ -54,7 +52,6 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 	//{{AFX_MSG_MAP(CAboutDlg)
-	ON_BN_CLICKED(IDREGISTER, OnRegister)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()		
 
@@ -88,12 +85,6 @@ BOOL CAboutDlg::OnInitDialog()
 	              // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-
-void CAboutDlg::OnRegister() 
-{
-	CRegDlg dlgReg;
-	dlgReg.DoModal();
-}
 
 ///////////////////
 // CTimeLogDlg dialog
@@ -187,7 +178,7 @@ BOOL CTimeLogDlg::OnInitDialog()
 	nid.uFlags = NIF_ICON|NIF_MESSAGE|NIF_TIP;
 	nid.uCallbackMessage = MYWM_NOTIFYICON;
 	nid.hIcon = m_hIcon;
-	strcpy(nid.szTip, "TimeLog �ffnen mit Doppelklick");
+	strcpy(nid.szTip, "TimeLog öffnen mit Doppelklick");
 	Shell_NotifyIcon(NIM_ADD, &nid); 
 	
 	int TabStopArray[2] = { 110, 150 };
@@ -499,29 +490,6 @@ void CTimeLogDlg::OnOK()
 	SetDlgItemText(IDC_BIS, "");
 	GetDlgItem(IDC_BESCHREIBUNG)->SetFocus();
 
-	if (0==1/*shareware*/)
-	{
-		StreamFormat *sf = new StreamFormat(liste);
-		
-		if (sf->GetRows() > 30)
-		{
-			MessageBox("Sie benutzen dieses Programm nun schon ein paar Tage. \
-Sie sollten sich �berlegen, ob Sie sich nicht registrieren lassen wollen! \
-Diesen kleine Nerven-Requester werden Sie zwar kaum ein zweites mal durchlesen, \
-aber rechnen wir nur mal zwei Sekunden zum Wegklicken: Wenn Sie dieses Programm \
-gesch�ftlich einsetzen und nur mal einen Stundensatz von 20,- DM zugrundelegen \
-und nehmen wir mal an, Sie erfassen die Zeiten von zehn T�tigkeiten am Tag - das \
-w�rde bedeuten, da� sich die 20,- DM f�r die Registrierung nach 180 Tagen amortisiert \
-h�tten! Und mehr noch: Sie w�rden �ber Programmerweiterungen wie etwa Statistiken und \
-Formulargeneratoren zur Abrechnung informiert werden. Geben Sie sich doch einen Ruck \
-und schicken 20,- DM und Ihre genaue Adresse (oder besser noch Fax-Nummer) an 'Thomas \
-Mielke, Luruper Weg 53, 20257 Hamburg'. Sie werden dann innerhalb von 14 Tagen mit der \
-registrierten Version arbeiten.", "Nerv, nerv, nerv...");
-		}
-
-		delete sf;
-	}
-
 	UpdateGesamtsumme();
 }
 
@@ -693,38 +661,6 @@ BOOL CTimeLogDlg::PreTranslateMessage(MSG* pMsg)
 	return CDialog::PreTranslateMessage(pMsg);
 }
 
-void CTimeLogDlg::Reg()
-{
-	extern BOOL CheckReg(char *);
-	extern void GetRegName(char *, char *);
-
-	GetPrivateProfileString(    
-		"Registration",	// points to section name 
-		"Number",		// points to key name 
-		"",				// points to default string 
-		reg,			// points to destination buffer 
-		sizeof(reg),	// size of destination buffer 
-		GetIniPath() 	// points to initialization filename 
-    );
-	if (!CheckReg(reg))
-	{
-		shareware = TRUE;
-		SetDlgItemText(IDC_REG_STRING, "Shareware Version");
-	}
-	else
-	{
-		char s[100];
-		char regstr[100];
-
-		shareware = FALSE;
-		
-		GetRegName(regstr, reg);
-		strcpy(s, "Registriert f�r ");
-		strcat(s, regstr);
-		SetDlgItemText(IDC_REG_STRING, s);
-	}
-}
-
 void CTimeLogDlg::OnStatistiken() 
 {
 	int choice;
@@ -793,6 +729,7 @@ void CTimeLogDlg::OnDestroy()
 			GetIniPath() 	// pointer to initialization filename 
 		);	
 
+	Shell_NotifyIcon(NIM_DELETE, &nid);
 }
 
 void CTimeLogDlg::OnKillfocusVon() 

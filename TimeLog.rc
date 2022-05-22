@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// German (Germany) resources
+// Deutsch (Deutschland) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
-#ifdef _WIN32
 LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -62,37 +60,38 @@ END
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\TimeLog.ico"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOG  34, 22, 217, 87
+IDD_ABOUTBOX DIALOGEX 34, 22, 174, 70
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About Time Log"
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
-    CONTROL         130,IDC_STATIC,"Static",SS_BITMAP,11,11,21,20
+    CONTROL         IDB_UHR,IDC_STATIC,"Static",SS_BITMAP,11,11,21,20
     LTEXT           "TimeLog",IDC_STATIC,40,10,29,8
-    LTEXT           "Copyright ï¿½ 1999 Thomas Mielke\n\nthomas.mielke@softhome.net\nhttp://www-student.hwp.uni-hamburg.de/MielkeT",IDC_STATIC,40,25,168,32
+    LTEXT           "Copyright (c) 1995-2022 Thomas Mielke\n\nt22@mielke.software\nhttps://mielke.software",IDC_STATIC,40,25,168,32
     DEFPUSHBUTTON   "OK",IDOK,158,67,50,14,WS_GROUP
     PUSHBUTTON      "&Registrieren",IDREGISTER,101,67,50,14
-    LTEXT           "v1.60",IDC_VERSION,72,10,54,8
+    LTEXT           "v1.61",IDC_VERSION,72,10,54,8
 END
 
-IDD_TIMELOG_DIALOG DIALOGEX 0, 0, 303, 162
+IDD_TIMELOG_DIALOG DIALOGEX 0, 0, 242, 130
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Time Log"
 FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
     LTEXT           "Beschreibun&g",IDC_STATIC,18,34,94,8
     EDITTEXT        IDC_BESCHREIBUNG,17,43,117,12,ES_AUTOHSCROLL
-    LTEXT           "&Kï¿½rzel",IDC_STATIC,140,34,25,9
+    LTEXT           "&Kürzel",IDC_STATIC,140,34,25,9
     EDITTEXT        IDC_KUERZEL,139,43,25,12,ES_AUTOHSCROLL
     DEFPUSHBUTTON   "OK",IDOK,174,9,50,14
     PUSHBUTTON      "&Beenden",IDCANCEL,174,27,50,14
     PUSHBUTTON      "&Info",IDABOUT,232,9,50,14
-    PUSHBUTTON      "&Liste Lï¿½schen",IDDELETE,232,27,50,14
+    PUSHBUTTON      "&Liste Löschen",IDDELETE,232,27,50,14
     PUSHBUTTON      "&Statistiken ...",IDSTATISTIKEN,232,44,50,14
     LTEXT           "&Datum",IDC_STATIC,18,8,43,9
     EDITTEXT        IDC_DATUM,17,17,40,12,ES_AUTOHSCROLL
@@ -113,19 +112,7 @@ BEGIN
     PUSHBUTTON      "<",IDVONDATUM,57,17,10,12
 END
 
-IDD_REGISTER_DIALOG DIALOG  0, 0, 186, 50
-STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Dialog"
-FONT 8, "MS Sans Serif"
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,73,29,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,129,29,50,14
-    LTEXT           "Registrier-Nr.",IDC_STATIC,7,9,49,10
-    EDITTEXT        IDC_REG_EDIT,59,7,120,13,ES_AUTOHSCROLL
-    PUSHBUTTON      "Nr.",IDC_MAKE_NR,18,29,50,14
-END
-
-IDD_STATISTIK_AUSWAHL DIALOG  0, 0, 94, 84
+IDD_STATISTIK_AUSWAHL DIALOG 0, 0, 94, 84
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -135,10 +122,10 @@ BEGIN
     PUSHBUTTON      "Abbrechen",IDCANCEL,7,63,80,14
 END
 
-IDD_STATISKTIK DIALOG  0, 0, 357, 199
+IDD_STATISKTIK DIALOGEX 0, 0, 357, 199
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Statistik"
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
     CONTROL         "",IDC_VSKALA,"Static",SS_GRAYRECT,7,21,30,153
     CONTROL         "",IDC_DISPLAY,"Static",SS_GRAYFRAME,37,21,271,153
@@ -146,7 +133,7 @@ BEGIN
     LTEXT           "Jahr",IDC_STATIC,11,182,18,10
     LTEXT           "",IDC_JAHR,29,181,26,11,SS_SUNKEN | WS_BORDER
     CONTROL         "Spin2",IDC_SPIN_JAHR,"msctls_updown32",UDS_SETBUDDYINT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,56,181,11,11
-    DEFPUSHBUTTON   "ZurÃ¼ck",IDCANCEL,300,178,50,14
+    DEFPUSHBUTTON   "Zurück",IDCANCEL,300,178,50,14
     LTEXT           "h",IDC_STATIC,10,14,8,8
     RTEXT           "Woche",IDC_HSKALA_TEXT,7,7,28,9
 END
@@ -197,25 +184,22 @@ END
 
 IDB_UHR                 BITMAP                  "res\\uhr.bmp"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // DESIGNINFO
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
         BOTTOMMARGIN, 81
     END
 
-    IDD_REGISTER_DIALOG, DIALOG
+    IDD_TIMELOG_DIALOG, DIALOG
     BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 179
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 43
     END
 
     IDD_STATISTIK_AUSWAHL, DIALOG
@@ -239,10 +223,31 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_TIMELOG_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_STATISKTIK AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_INDICATOR_EXT        "ER"
     ID_INDICATOR_CAPS       "UF"
@@ -252,12 +257,12 @@ BEGIN
     ID_INDICATOR_REC        "MA"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_ABOUTBOX            "Inf&o ï¿½ber Time Log..."
 END
 
-#endif    // German (Germany) resources
+#endif    // Deutsch (Deutschland) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
