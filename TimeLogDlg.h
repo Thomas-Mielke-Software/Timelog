@@ -31,6 +31,7 @@ public:
 public:
 	char *liste;
 	long size_of_liste;
+	char *liste_gefiltert;
 
 private:
 	void SaveListe();
@@ -70,6 +71,8 @@ protected:
 	afx_msg void OnVondatum();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedFiltern();
 };
 
 #define MYWM_NOTIFYICON		(WM_APP+100)

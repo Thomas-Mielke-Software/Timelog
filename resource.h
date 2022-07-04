@@ -39,6 +39,8 @@
 #define IDC_HSKALA_TEXT                 1020
 #define IDC_CHECK                       1021
 #define IDC_VERSION                     1022
+#define IDC_CHECK2                      1022
+#define IDC_FILTERN                     1022
 
 // Next default values for new objects
 // 

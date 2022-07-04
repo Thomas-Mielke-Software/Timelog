@@ -99,6 +99,7 @@ CTimeLogDlg::CTimeLogDlg(CWnd* pParent /*=NULL*/)
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 
 	liste = NULL;
+	liste_gefiltert = NULL;
 	size_of_liste = 0;
 	timer = 0;
 }
@@ -137,6 +138,7 @@ BEGIN_MESSAGE_MAP(CTimeLogDlg, CDialog)
 	ON_BN_CLICKED(IDVONZEIT, OnVonzeit)
 	ON_BN_CLICKED(IDVONDATUM, OnVondatum)
 	//}}AFX_MSG_MAP
+	ON_BN_CLICKED(IDC_FILTERN, &CTimeLogDlg::OnBnClickedFiltern)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -378,7 +380,7 @@ void CTimeLogDlg::OnOK()
 		GetDlgItemText(IDC_KUERZEL, kuerzel, sizeof(kuerzel));
 		if (!*kuerzel) 
 		{
-			MessageBox("Wenn die Check-Box angekreuzt ist, mu� ein K�rzel angegeben werden!");			
+			MessageBox("Wenn die Check-Box angekreuzt ist, muss ein Kürzel angegeben werden!");			
 			GetDlgItem(IDC_KUERZEL)->SetFocus();
 			return;
 		}
@@ -398,7 +400,7 @@ void CTimeLogDlg::OnOK()
 			!isdigit(buffer2[6]) ||
 			!isdigit(buffer2[7]))
 		{
-			MessageBox("Datumsformat mu� dem Schema ##.##.## entsprechen!");
+			MessageBox("Datumsformat muss dem Schema ##.##.## entsprechen!");
 			GetDlgItem(IDC_DATUM)->SetFocus();
 			return;
 		}
@@ -413,12 +415,12 @@ void CTimeLogDlg::OnOK()
 			!isdigit(buffer3[3]) ||
 			!isdigit(buffer3[4]))
 		{
-			MessageBox("Zeitformat mu� dem Schema ##:## entsprechen!");
+			MessageBox("Zeitformat muss dem Schema ##:## entsprechen!");
 			GetDlgItem(IDC_VON)->SetFocus();
 			return;
 		}
 	}
-	// spezialbehandlung f�r Bis-Zeit:
+	// spezialbehandlung für Bis-Zeit:
 	{
 		GetDlgItemText(IDC_BIS, buffer2, sizeof(buffer2));
 		if (!*buffer2)
@@ -438,7 +440,7 @@ void CTimeLogDlg::OnOK()
 			!isdigit(buffer2[3]) ||
 			!isdigit(buffer2[4]))
 		{
-			MessageBox("Zeitformat mu� dem Schema ##:## entsprechen!");
+			MessageBox("Zeitformat muss dem Schema ##:## entsprechen!");
 			GetDlgItem(IDC_BIS)->SetFocus();
 			return;
 		}
@@ -455,7 +457,7 @@ void CTimeLogDlg::OnOK()
 
 		if (von >= bis)
 		{	
-			MessageBox("Von-Zeit mu� vor der Bis-Zeit liegen!", "Fehler", MB_ICONEXCLAMATION | MB_OK);
+			MessageBox("Von-Zeit muss vor der Bis-Zeit liegen!", "Fehler", MB_ICONEXCLAMATION | MB_OK);
 			return;
 		}
 		else
@@ -479,8 +481,10 @@ void CTimeLogDlg::OnOK()
 	
 	if (strlen(liste) < size_of_liste - sizeof(buffer))
 		strcat(liste, buffer);
+	else
+		OnErrspaceListe();
 	
-	SetDlgItemText(IDC_LISTE, liste);
+	OnBnClickedFiltern();
 											  
 	SaveListe();
 
@@ -522,6 +526,12 @@ void CTimeLogDlg::UpdateSelektiertSumme()
 	DWORD start_pos, end_pos;
 	char *cp1, *cp2;
 	char save_it;
+	char* welche_liste;
+
+	if (((CButton*)GetDlgItem(IDC_FILTERN))->GetCheck())
+		welche_liste = liste_gefiltert;
+	else
+		welche_liste = liste;
 
 	GetDlgItem(IDC_LISTE)->SendMessage(
 		EM_GETSEL, 
@@ -530,8 +540,8 @@ void CTimeLogDlg::UpdateSelektiertSumme()
 
 	if ((!start_pos && !end_pos) || 
 		start_pos >= end_pos ||
-		start_pos > strlen(liste) ||
-		end_pos   > strlen(liste))
+		start_pos > strlen(welche_liste) ||
+		end_pos   > strlen(welche_liste))
 	{
 		SetDlgItemText(IDC_SELEKTIERT, "0:00");
 		return;
@@ -541,14 +551,14 @@ void CTimeLogDlg::UpdateSelektiertSumme()
 	GetDlgItemText(IDC_KUERZEL2, kuerzel, sizeof(kuerzel));
 	*kuerzel = toupper(*kuerzel);
 
-	for (cp1 = liste + start_pos; cp1 > liste; cp1--)
+	for (cp1 = welche_liste + start_pos; cp1 > welche_liste; cp1--)
 		if (!strncmp("\r\n", cp1, 2))
 		{
 			cp1 += 2;
 			break;
 	}
 
-	cp2 = liste + end_pos;
+	cp2 = welche_liste + end_pos;
 	if (!(end_pos >= 2 && !strncmp("\r\n", cp2 - 2, 2)))
 		for (; *cp2; cp2++)
 			if (!strncmp("\r\n", cp2, 2))
@@ -593,7 +603,7 @@ void CTimeLogDlg::SaveListe()
 
 void CTimeLogDlg::OnDelete() 
 {
-	if (MessageBox("Liste wirklich l�schen?", "L�schen", MB_ICONQUESTION | MB_YESNO) == IDYES)
+	if (MessageBox("Liste wirklich löschen?", "Löschen", MB_ICONQUESTION | MB_YESNO) == IDYES)
 	{
 		memset(liste, '\0', size_of_liste);
 		SetDlgItemText(IDC_LISTE, "");
@@ -610,8 +620,7 @@ void CTimeLogDlg::OnVonzeit()
 	sprintf(buffer, "%02d:%02d", now.GetHour(), now.GetMinute());
 	SetDlgItemText(IDC_VON, buffer);
 
-	GetDlgItem(IDC_BESCHREIBUNG)->SetFocus();
-
+	OnVondatum();
 }
 
 void CTimeLogDlg::OnBiszeit() 
@@ -639,7 +648,7 @@ void CTimeLogDlg::OnVondatum()
 
 void CTimeLogDlg::OnErrspaceListe() 
 {
-	MessageBox("Liste hat die maximale Aufnahmekapazit�t f�r Eintr�ge erreicht. Bitte die TimeLog.txt-Datei l�schen/umbenennen, um mit einem neuer neuen Log-Datei zu beginnen");
+	MessageBox("Liste hat die maximale Aufnahmekapazität für Einträge erreicht. Bitte die TimeLog.txt-Datei löschen/umbenennen, um mit einem neuer neuen Log-Datei zu beginnen");
 }
 
 void CTimeLogDlg::OnLButtonUp(UINT nFlags, CPoint point) 
@@ -809,6 +818,7 @@ void CTimeLogDlg::OnChangeKuerzel2()
 			*kuerzel = toupper(*kuerzel);
 			SetDlgItemText(IDC_KUERZEL2, kuerzel);
 		}
+		OnBnClickedFiltern();
 	}
 }
 
@@ -888,4 +898,79 @@ char *CTimeLogDlg::GetIniPath()
 	}
 	strcat(inipath, "TimeLog.ini");	
 	return inipath;
+}
+
+void CTimeLogDlg::OnBnClickedFiltern()
+{
+	if (((CButton*)GetDlgItem(IDC_FILTERN))->GetCheck())
+	{
+		if (!liste_gefiltert)
+			liste_gefiltert = new char[(size_of_liste + 20000)];
+
+		memset(liste_gefiltert, '\0', size_of_liste + 20000);
+
+		char kuerzel[2];
+		GetDlgItemText(IDC_KUERZEL2, kuerzel, sizeof(kuerzel));
+		*kuerzel = toupper(*kuerzel);
+
+		char *cp1, *cp2, *cp3, *zeilenanfang;
+		int spaltenzaehler = 0;
+		BOOL bFiltern = TRUE;
+		for (cp1 = liste, cp2 = zeilenanfang = liste_gefiltert; *cp2 = *cp1;)
+		{
+			if (!strncmp("31.08.19 13:18", cp1, 14))
+			{
+				cp3 = cp2;
+			}
+
+			// out of memory?
+			if (cp2 - liste_gefiltert >= size_of_liste + 20000)
+			{
+				cp2[size_of_liste + 20000 - 1] = '\0';
+				OnErrspaceListe();
+				break;
+			}
+
+			// Wert in Kürzelspalte
+			if (spaltenzaehler == 27)
+			{
+				if (*kuerzel == *cp1)
+					bFiltern = FALSE;
+				else
+					bFiltern = TRUE;
+			}
+
+			if (!strncmp("\r\n", cp1, 2))
+			{
+				if (bFiltern)
+				{
+					if (zeilenanfang == liste_gefiltert)
+						cp2 = zeilenanfang - 1;
+					else
+						cp2 = zeilenanfang;   // zurück auf Anfang
+					cp1++;
+				}
+				else
+				{
+					*(++cp2) = *(++cp1);  // auch noch '\n' kopieren
+					zeilenanfang = cp2;
+				}
+
+				bFiltern = TRUE;
+				spaltenzaehler = 0;
+			}
+			else
+				spaltenzaehler++;
+
+			cp1++; cp2++;
+		}
+
+		SetDlgItemText(IDC_LISTE, liste_gefiltert);
+		GetDlgItem(IDOK)->EnableWindow(false);  // speichern unterbinden
+	}
+	else
+	{
+		SetDlgItemText(IDC_LISTE, liste);
+		GetDlgItem(IDOK)->EnableWindow();		// speichern wieder erlauben
+	}
 }

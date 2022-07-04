@@ -66,7 +66,7 @@ IDR_MAINFRAME           ICON                    "res\\TimeLog.ico"
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOGEX 34, 22, 174, 70
+IDD_ABOUTBOX DIALOGEX 34, 22, 219, 88
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About Time Log"
 FONT 8, "MS Sans Serif", 0, 0, 0x0
@@ -74,9 +74,9 @@ BEGIN
     CONTROL         IDB_UHR,IDC_STATIC,"Static",SS_BITMAP,11,11,21,20
     LTEXT           "TimeLog",IDC_STATIC,40,10,29,8
     LTEXT           "Copyright (c) 1995-2022 Thomas Mielke\n\nt22@mielke.software\nhttps://mielke.software",IDC_STATIC,40,25,168,32
-    DEFPUSHBUTTON   "OK",IDOK,158,67,50,14,WS_GROUP
-    PUSHBUTTON      "&Registrieren",IDREGISTER,101,67,50,14
-    LTEXT           "v1.61",IDC_VERSION,72,10,54,8
+    DEFPUSHBUTTON   "OK",IDOK,157,66,50,14,WS_GROUP
+    PUSHBUTTON      "&Registrieren",IDREGISTER,100,66,50,14
+    LTEXT           "v1.62",IDC_VERSION,72,10,54,8
 END
 
 IDD_TIMELOG_DIALOG DIALOGEX 0, 0, 303, 162
@@ -87,7 +87,7 @@ BEGIN
     LTEXT           "Beschreibun&g",IDC_STATIC,18,34,94,8
     EDITTEXT        IDC_BESCHREIBUNG,17,43,117,12,ES_AUTOHSCROLL
     LTEXT           "&Kürzel",IDC_STATIC,140,34,25,9
-    EDITTEXT        IDC_KUERZEL,139,43,25,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_KUERZEL,139,43,20,12,ES_AUTOHSCROLL
     DEFPUSHBUTTON   "OK",IDOK,174,9,50,14
     PUSHBUTTON      "&Beenden",IDCANCEL,174,27,50,14
     PUSHBUTTON      "&Info",IDABOUT,232,9,50,14
@@ -107,9 +107,10 @@ BEGIN
     LTEXT           "",IDC_GESAMT,45,147,26,9
     LTEXT           "Selektiert",IDC_STATIC,76,147,31,9
     LTEXT           "",IDC_SELEKTIERT,110,147,28,9
-    EDITTEXT        IDC_KUERZEL2,139,145,25,12,ES_AUTOHSCROLL
-    LTEXT           "",IDC_REGISTERED_FOR,167,147,131,9
+    EDITTEXT        IDC_KUERZEL2,139,145,20,12,ES_AUTOHSCROLL
     PUSHBUTTON      "<",IDVONDATUM,57,17,10,12
+    CONTROL         "Liste filtern (und nicht nur die Summe)",IDC_FILTERN,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,164,147,136,8
 END
 
 IDD_STATISTIK_AUSWAHL DIALOG 0, 0, 94, 84
@@ -145,8 +146,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,60,0,3
- PRODUCTVERSION 1,60,0,3
+ FILEVERSION 1,62,0,1
+ PRODUCTVERSION 1,62,0,1
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -162,12 +163,12 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "FileDescription", "TimeLog MFC-Anwendung"
-            VALUE "FileVersion", "1, 61, 0, 1"
+            VALUE "FileVersion", "1.62.0.1"
             VALUE "InternalName", "TIMELOG"
             VALUE "LegalCopyright", "Copyright (c) 1995-2022"
             VALUE "OriginalFilename", "TIMELOG.EXE"
             VALUE "ProductName", "TimeLog Anwendung"
-            VALUE "ProductVersion", "1, 61, 0, 1"
+            VALUE "ProductVersion", "1.62.0.1"
         END
     END
     BLOCK "VarFileInfo"
@@ -195,13 +196,13 @@ GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
-        BOTTOMMARGIN, 81
+        RIGHTMARGIN, 174
+        BOTTOMMARGIN, 70
     END
 
     IDD_TIMELOG_DIALOG, DIALOG
     BEGIN
-        RIGHTMARGIN, 242
-        BOTTOMMARGIN, 130
+        BOTTOMMARGIN, 157
     END
 
     IDD_STATISTIK_AUSWAHL, DIALOG
@@ -255,13 +256,13 @@ BEGIN
     ID_INDICATOR_CAPS       "UF"
     ID_INDICATOR_NUM        "NUM"
     ID_INDICATOR_SCRL       "RF"
-    ID_INDICATOR_OVR        "ï¿½B"
+    ID_INDICATOR_OVR        "ÜB"
     ID_INDICATOR_REC        "MA"
 END
 
 STRINGTABLE
 BEGIN
-    IDS_ABOUTBOX            "Inf&o ï¿½ber Time Log..."
+    IDS_ABOUTBOX            "Inf&o über Time Log..."
 END
 
 #endif    // Deutsch (Deutschland) resources
